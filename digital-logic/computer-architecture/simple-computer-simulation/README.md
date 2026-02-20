@@ -1,4 +1,7 @@
 # Simple Computer Architecture (Multisim)
+## System Architecture
+
+![Full System Architecture](full_system_architecture.png)
 
 ## Overview
 Design and simulation of a basic computer architecture with a hardwired control unit.
