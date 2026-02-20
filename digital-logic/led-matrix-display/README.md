@@ -24,20 +24,6 @@ This project models a classic synchronous display pipeline:
 
 ---
 
-## Operation Modes (Conceptual)
-
-| Mode | What happens | Key signals/components |
-|------|--------------|------------------------|
-| **Load** | Initial pattern is loaded into storage registers | Parallel load path (MUX select = load) |
-| **Shift Left** | Pattern shifts one step per clock tick to the left | Shift-left datapath + clock |
-| **Shift Right** | Pattern shifts one step per clock tick to the right | Shift-right datapath + clock |
-| **Hold / Idle** | Pattern stays constant | Feedback path (no change) |
-| **Reset/Clear** *(if implemented)* | Clears registers to 0 | Clear/reset pins on registers |
-
-> اگر توی مدار دقیقاً بعضی مودها رو نداری (مثلاً Hold یا Reset)، این جدول رو می‌تونی نگه داری ولی اون ردیف رو حذف کن.
-
----
-
 ## Project Phases (with Diagrams)
 
 ### Phase 1 — Core storage / initial movement logic
