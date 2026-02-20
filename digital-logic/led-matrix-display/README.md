@@ -1,91 +1,98 @@
-# LED Matrix Moving Display (Digital Logic Project — NI Multisim)
+# LED Matrix Moving Display (Digital Logic — NI Multisim)
 
-Design and simulation of a **moving LED matrix display** implemented in **NI Multisim**, based on **shift-register / flip-flop sequencing** and **multiplexer-based control**.  
-The project is implemented in **phases** (incremental development), ending with a complete LED-matrix animation that can move **left ↔ right**.
-
----
-
-## Overview
-
-This project builds a digital logic system that can display **characters/numbers/shapes** on an LED matrix and animate them as a **moving pattern**.  
-Key idea: store an initial pattern, then repeatedly **shift** it with a clock to create motion across the LED array.
+A phased digital-logic implementation of a **moving LED matrix display** in **NI Multisim**, using **shift-register style sequencing** and **multiplexer-controlled datapaths** to load and shift predefined patterns (character/number/shape) **left ↔ right**.
 
 ---
 
-## What it Demonstrates (Learning Outcomes)
+## Quick Snapshot
 
-- D Flip-Flop–based storage and sequencing (Shift Register concept)
-- Control of data-path using **Multiplexers** (mode selection)
-- Clock-driven synchronous update (timing / animation speed control)
-- Modular construction (scaling from small register → larger display)
-- Practical simulation workflow in **NI Multisim** (circuit + report + diagrams)
-
----
-
-## Core Features
-
-- **Predefined pattern loading** (initial bits representing a shape/character)
-- **Shift Right / Shift Left** motion modes (direction control)
-- **Hold / Static display** mode (keep pattern unchanged)
-- **Reset/Clear capability** (depending on the phase design)
-- **Scalable architecture** (phased growth toward the final display)
+- **Platform:** NI Multisim (`.ms14`)
+- **Outcome:** Animated LED-matrix pattern movement with direction control
+- **Method:** Modular (phase-based) build-up → final integrated design
+- **Artifacts:** Circuit files + report + phase diagrams (screenshots)
 
 ---
 
-## Repository Structure (This Folder)
+## Architecture & Design Rationale
 
-**Main circuit and report**
-- `LED Matrix.ms14` — Final integrated Multisim project (complete design)
-- `LED Matrix.pdf` — Project report/documentation
+This project models a classic synchronous display pipeline:
 
-**Phased implementation (incremental builds)**
-- `first phase.ms14` — Phase 1 implementation
-- `second phase.ms14` — Phase 2 implementation
+1. **Pattern definition / storage** (binary vector representing a symbol/shape)
+2. **Clocked shifting** to create animation across the LED matrix
+3. **Control logic** (e.g., direction selection) that selects the next-state path using multiplexers
+4. **Output mapping** to LED rows/columns (depending on your matrix wiring)
 
-**Diagrams / Screenshots**
+---
+
+## Operation Modes (Conceptual)
+
+| Mode | What happens | Key signals/components |
+|------|--------------|------------------------|
+| **Load** | Initial pattern is loaded into storage registers | Parallel load path (MUX select = load) |
+| **Shift Left** | Pattern shifts one step per clock tick to the left | Shift-left datapath + clock |
+| **Shift Right** | Pattern shifts one step per clock tick to the right | Shift-right datapath + clock |
+| **Hold / Idle** | Pattern stays constant | Feedback path (no change) |
+| **Reset/Clear** *(if implemented)* | Clears registers to 0 | Clear/reset pins on registers |
+
+> اگر توی مدار دقیقاً بعضی مودها رو نداری (مثلاً Hold یا Reset)، این جدول رو می‌تونی نگه داری ولی اون ردیف رو حذف کن.
+
+---
+
+## Project Phases (with Diagrams)
+
+### Phase 1 — Core storage / initial movement logic
+![Phase 1 Diagram](./first%20phase.PNG)
+
+### Phase 2 — Expanded logic / scaling toward full display
+![Phase 2 Diagram](./second%20phase.PNG)
+
+### Phase 3 (Final) — Integrated LED matrix moving display
+![Final Phase Diagram](./third%20phase%28final%20phase%29.PNG)
+
+---
+
+## Files Included
+
+### Final integrated project
+- `LED Matrix.ms14` — Final NI Multisim circuit (complete design)
+- `LED Matrix.pdf` — Documentation/report
+
+### Phase implementations
+- `first phase.ms14` — Phase 1 circuit
+- `second phase.ms14` — Phase 2 circuit
+
+### Diagrams (screenshots)
 - `first phase.PNG`
 - `second phase.PNG`
 - `third phase(final phase).PNG`
-
-> Tip: GitHub renders `.PNG` directly in the browser, so these act as visual documentation.
 
 ---
 
 ## How to Run (NI Multisim)
 
-1. Install **NI Multisim** (version compatible with `.ms14` files).
-2. Open the main circuit:
-   - `LED Matrix.ms14`
-3. Start simulation:
-   - **Simulate → Run**
-4. Adjust animation speed (if needed):
-   - Change the **clock frequency** used in the design.
-5. Observe output:
-   - LED states should animate according to the selected motion mode (left/right).
+1. Open `LED Matrix.ms14` in **NI Multisim**.
+2. Start simulation: **Simulate → Run**.
+3. If motion is too fast/slow, adjust the **clock frequency** in the circuit.
+4. Use the control inputs (direction/select lines) to switch between **Shift Left** and **Shift Right**.
+5. Observe the LED matrix output: the pattern should move smoothly across the display.
 
 ---
 
-## How to Review the Design Quickly
+## How to Demo (30–60 seconds)
 
-If you want a fast understanding without opening Multisim:
+A clean demo video typically shows:
 
-1. Read `LED Matrix.pdf` (explains logic and phases)
-2. Inspect diagrams:
-   - `first phase.PNG` → initial register / core mechanism
-   - `second phase.PNG` → expanded logic / scaling step
-   - `third phase(final phase).PNG` → final integrated display
+1. **Load** a pattern (show the initial static pattern on LEDs)
+2. Run **Shift Right** for a few seconds
+3. Switch to **Shift Left** and show reversal
+4. Optionally show **Reset/Clear** (if available)
+5. Zoom briefly on the clock/control part to prove it’s synchronous logic
 
 ---
 
 ## Notes
 
-- The project is fully **simulation-based** (Multisim).
-- File naming is kept close to the original phase structure to match the report and diagrams.
-- If you need cleaner naming later, you can rename files (GitHub keeps history).
+- This repository stores the project in a **phase-based** structure to match development and evaluation.
+- File naming is preserved to align diagrams, Multisim circuits, and the PDF report.
+- GitHub can preview `.PNG` files directly; the `.ms14` files require NI Multisim.
 
----
-
-## License
-
-This repository includes a `LICENSE` file at the root level.  
-If you reuse parts of the project, keep attribution consistent with the license terms.
