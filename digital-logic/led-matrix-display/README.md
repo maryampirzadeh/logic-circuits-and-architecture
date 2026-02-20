@@ -27,7 +27,7 @@ This project models a classic synchronous display pipeline:
 ## Project Phases (with Diagrams)
 
 ### Phase 1 — Core storage / initial movement logic
-![Phase 1 Diagram](first%20phase.PNG)
+![Phase 1 Diagram](./first%20phase.PNG)
 
 ### Phase 2 — Expanded logic / scaling toward full display
 ![Phase 2 Diagram](./second%20phase.PNG)
