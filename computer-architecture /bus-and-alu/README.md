@@ -8,19 +8,13 @@ The system demonstrates register-based data transfer, controlled bus selection, 
 
 ## System Architecture
 
-### 🔹 Shared Bus
+### Shared Bus
 - 6-bit parallel data bus
 - Multiplexer-based bus selection
 - Controlled data routing between registers and memory
 - Synchronous operation with external clock
 
-### 🔹 Registers
-- Multiple 6-bit general-purpose registers
-- Accumulator (AC)
-- Load, Clear, and Increment control signals
-- Clock-driven synchronous design
-
-### 🔹 Arithmetic Logic Unit (ALU)
+### Arithmetic Logic Unit (ALU)
 Implemented using combinational logic blocks and full adders:
 
 Supported operations:
