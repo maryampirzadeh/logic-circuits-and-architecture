@@ -31,7 +31,7 @@ All segment equations are implemented using basic logic gates (AND, OR, NOT).
 
 ## Circuit Diagram
 
-![7-Segment Circuit](./7-segment.png)
+![7-Segment Circuit](./7%20segment.PNG)
 
 ---
 
